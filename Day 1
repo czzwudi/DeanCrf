@@ -1,0 +1,35 @@
+最大连续 1 的个数
+给定一个二进制数组 nums ， 计算其中最大连续 1 的个数。
+
+示例 1：
+输入：nums = [1,1,0,1,1,1]
+输出：3
+解释：开头的两位和最后的三位都是连续 1 ，所以最大连续 1 的个数是 3.
+
+示例 2:
+输入：nums = [1,0,1,1,0,1]
+输出：2
+
+思路：count=0表示连续1的个数为0，count=1表示连续1的个数为1.
+      max表示好多个连续1中最大的数即为所求.
+      从头开始遍历，遇到1count加一，遇到0则count与max进行比较，并替换.
+      有可能是最后一段，最后不会遇到0导致不能将最大的count更新成max，所以最后还要进行count和max的比较.
+
+题解：
+int findMaxConsecutiveOnes(int* nums, int numsSize){
+    int count = 0, max = 0;
+    for(int i = 0; i < numsSize; i++)
+    {
+        if(nums[i] == 1) //如果遇到1则count++，否则该连续的片段结束，与之前的max进行比较.
+            count++;
+        else
+        {
+            if(count > max)
+            max = count;
+            table = 0;
+        }
+    }
+    if(count > max)
+    max = count;
+    return max;
+}
